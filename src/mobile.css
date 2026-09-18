@@ -1,0 +1,110 @@
+/* Mobile layout: natural document flow and intrinsic media proportions. */
+@media (max-width: 700px) {
+  html { scroll-padding-top: 88px; }
+  .wrap { width: calc(100% - 40px); }
+  .navigation {
+    height: 68px;
+    padding: env(safe-area-inset-top, 0px) 20px 0;
+  }
+  .navigation .wordmark { font-size: 26px; min-height:44px; align-items:center; }
+  .navigation nav { gap: 8px; }
+  .navigation nav a { display:flex; align-items:center; min-height:44px; padding:8px; margin:0; font-size:12px; }
+  .hero { height:auto; min-height:100svh; display:flex; flex-direction:column; }
+  .hero-content { position:relative; top:auto; transform:none; padding-top:clamp(260px,36svh,340px); padding-bottom:28px; }
+  .hero .poster-title { font-size:clamp(54px,18vw,110px); line-height:1.05; letter-spacing:-.065em; margin-bottom:18px; }
+  .hero-visual { inset:68px 0 auto; height:440px; }
+  .hero-visual video { padding:0; object-fit:cover; object-position:center; mask-image:linear-gradient(180deg,transparent,#000 12%,#000 64%,transparent); }
+  .poster-topline { align-items:center; gap:12px; margin-bottom:12px; }
+  .poster-year { font-size:27px; }
+  .poster-edition { font-size:9px; line-height:1.6; letter-spacing:.6px; }
+  .poster-byline { gap:15px; }
+  .poster-byline strong { font-size:15px; letter-spacing:1.3px; }
+  .poster-byline span { font-size:11px; line-height:1.7; max-width:185px; }
+  .poster-byline p { font-size:11px; line-height:1.6; letter-spacing:.3px; }
+  .poster-intro { margin-top:40px; gap:22px; }
+  .poster-intro .hero-description { font-size:16px; line-height:1.8; letter-spacing:.5px; }
+  .poster-intro .hero-description span { font-size:12px; line-height:1.8; }
+  .poster-cta { min-height:46px; font-size:13px; padding:10px 14px; }
+  .hero-bottom { position:relative; bottom:auto; left:auto; right:auto; margin-top:auto; margin-bottom:calc(18px + env(safe-area-inset-bottom, 0px)); padding-top:12px; }
+  .scroll-link { min-height:44px; font-size:11px; }
+  .video-toggle { min-height:44px; min-width:68px; font-size:12px; }
+  .hero-registration i:nth-child(n+3) { display:none; }
+  .section-space { padding-block:62px; }
+  .section-label { font-size:11px; letter-spacing:1px; margin-bottom:30px; }
+  .about-grid { grid-template-columns:minmax(0,1fr); gap:35px; }
+  .portrait-block { position:static; min-width:0; }
+  .about-copy h2,.section-heading h2 { font-size:clamp(28px,7.2vw,40px); line-height:1.5; letter-spacing:-.8px; }
+  .body-copy { font-size:14px; line-height:1.95; margin-top:20px; }
+  .service-list p { font-size:13px; line-height:1.85; }
+  .services-label { font-size:10px; line-height:1.8; }
+  .service-list h3 { font-size:15px; }
+  .education { gap:16px; }
+  .education span { font-size:10px; line-height:1.5; }
+  .education p { font-size:12px; line-height:1.7; }
+  .stats strong { font-size:clamp(25px,7.5vw,33px); }
+  .stats p { font-size:10px; line-height:1.6; }
+  .text-link { min-height:44px; overflow-wrap:anywhere; font-size:14px; }
+  .experience-detail { font-size:13px; }
+  .experience-row strong { font-size:14px; }
+  .section-heading > p { font-size:13px; line-height:1.85; }
+  .collection-header { align-items:start; }
+  .collection-header h3 { font-size:18px; line-height:1.6; }
+  .collection-header > span { line-height:1.8; }
+  .film-grid { grid-template-columns:minmax(0,1fr); gap:32px; }
+  .film-grid .case-card:nth-child(even) { transform:none; }
+  .film-grid .case-cover { aspect-ratio:16/9; }
+  .case-cover img { object-fit:cover; }
+  .case-heading { padding-top:16px; }
+  .case-heading h3 { font-size:22px; }
+  .case-heading p { font-size:12px; }
+  .case-description { font-size:14px; line-height:1.85; max-width:100%; }
+  .case-overlay { font-size:13px; }
+  .case-status { font-size:10px; }
+  .image-header { margin-top:56px; }
+  .ag-panel__media img { object-fit:cover; }
+  .ag-panel__text { white-space:normal; line-height:1.5; font-size:17px; }
+  .ag-panel__text small { font-size:11px; line-height:1.6; }
+  .case-dialog { width:calc(100vw - 24px); max-height:calc(100svh - 24px); margin:auto; }
+  .case-dialog-top { min-height:66px; padding:10px 14px; }
+  .case-dialog .dialog-close { min-width:72px; min-height:44px; font-size:13px; }
+  .case-detail-media > img,.case-detail-media > video { width:100%; height:auto; max-height:55svh; object-fit:contain; }
+  .case-detail-copy { padding:24px 18px; overflow-wrap:anywhere; }
+  .case-detail-copy > p:not(.case-kicker) { font-size:14px; }
+  .case-facts { gap:20px; flex-wrap:wrap; }
+  .case-contact { min-height:44px; display:inline-flex; align-items:center; font-size:13px; }
+  .strength-grid { grid-template-columns:minmax(0,1fr); gap:16px; }
+  .strength-card { padding:24px; }
+  .strength-card h3 { font-size:20px; }
+  .strength-card > p { font-size:14px; min-height:0; line-height:1.85; }
+  .strength-top { font-size:12px; }
+  .line-art { margin-top:12px; height:70px; }
+  .tags > span { font-size:11px; padding:6px 9px; }
+  .pc-contact-btn { min-height:44px; }
+  .contact-inner { padding-top:58px; }
+  .contact h2 { font-size:clamp(36px,10vw,48px); line-height:1.3; letter-spacing:-1px; }
+  .contact-intro { font-size:14px; line-height:1.8; }
+  .contact-details { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; }
+  .contact-details > div,.contact-details > div:last-child { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; column-gap:8px; padding:18px 14px; background:#fff4e533; border:1px solid #ffffff55; border-radius:10px; }
+  .contact-details p { grid-column:1/-1; font-size:11px; margin:0 0 8px; }
+  .contact-details a,.contact-details .wechat-id { font-size:clamp(13px,3.6vw,16px); min-height:44px; display:flex; align-items:center; line-height:1.6; margin:0; padding:0; overflow-wrap:anywhere; }
+  .contact-details .copy-button { min-width:52px; min-height:44px; margin:0; padding:8px; font-size:12px; background:#fff4e540; border:1px solid #a7483260; border-radius:6px; }
+  .contact-details .copy-button:is(:hover,:focus-visible) { background:#bd3e22; color:white; }
+  .contact-details small { grid-column:1/-1; }
+  .contact footer { flex-wrap:wrap; gap:12px; padding:24px 0 calc(24px + env(safe-area-inset-bottom,0px)); }
+  footer>a:last-child { min-height:44px; display:flex; align-items:center; }
+}
+@media (max-width:360px) {
+  .wrap,.hero-content { width:calc(100% - 32px); }
+  .navigation { padding-inline:16px; }
+  .navigation nav { gap:0; }
+  .navigation nav a { padding-inline:7px; font-size:11px; }
+  .poster-byline { gap:10px; }
+  .poster-byline strong { font-size:13px; }
+  .poster-byline p { font-size:10px; }
+  .contact-details > div { padding-inline:12px; }
+}
+@media (orientation:landscape) and (max-height:500px) and (min-width:701px) and (max-width:1000px) {
+  .hero { min-height:760px; }
+  .hero-visual { max-width:100%; }
+  .hero-visual video { object-fit:contain; }
+}

@@ -1,0 +1,157 @@
+/* Shared studio palette: neutral paper, graphite type, four material accents. */
+:root {
+  color: #28252b;
+  background: #eeeceb;
+  --muted: #69616b;
+  --line: #d0c8c6;
+  --accent: #c34324;
+}
+::selection { background: #ffb396; color: #382119; }
+a:focus-visible,button:focus-visible,summary:focus-visible { outline-color: #c34324; }
+.hero .poster-title { font-size: clamp(88px,19vw,348px); letter-spacing: -.06em; }
+.hero-visual video {
+  transform-origin: 50% 50%;
+  animation: sculpture-turn 32s ease-in-out infinite;
+  animation-play-state: var(--sculpture-motion, paused);
+}
+@keyframes sculpture-turn {
+  0%,100% { transform: rotate(-4deg) scale(.97); }
+  50% { transform: rotate(4deg) scale(.97); }
+}
+.section-space { padding-top: 106px; padding-bottom: 106px; }
+.section-label { color: #514650; font-size: 11px; }
+.section-label > span { color: #c34324; }
+.section-heading h2,.about-copy h2 { font-weight: 600; }
+.eyebrow,.about-copy .eyebrow { color: #ad3c23; }
+.muted { color: #d44b29; }
+.body-copy,.location { color: #655d63; }
+.portrait-frame { background: #fff4ed; padding: 32px 44px 0; border: 1px solid #ffffff; }
+.portrait-frame img { mix-blend-mode: normal; filter: none; }
+.portrait-signature { font-weight: 500; }
+.portrait-signature > span { color: #6c616a; }
+.education span { color: #79616a; }
+.education p { color: #665960; }
+.stats { background: #ffe4c0; padding: 25px 22px; }
+.stats strong { color: #502b21; }
+.stats strong > span,.stats p { color: #785442; }
+.text-link { color: #af3e23; }
+.text-link > span { color: #e75e35; }
+.experience-heading > span { color: #79616a; }
+.experience-date,.experience-role { color: #71616a; }
+.experience-row summary { transition: background .2s; }
+.experience-row summary:hover { background: #ffddcb; }
+.experience-row[open] { background: #fff1e9; }
+.expand-icon { color: #c34324; }
+.experience-detail { color: #64505a; }
+.experience-detail > span { color: #b53d24; }
+.works {
+  background: #f8f5f2;
+  border-top: 14px solid #ffffff;
+  border-bottom: 14px solid #ffffff;
+}
+.section-heading > p { color: #71636c; }
+.work-grid { gap: 36px; }
+.work-card { padding: 18px 18px 22px; background: #ffe2d3; border: 1px solid #ffffff; }
+.work-card.offset { padding-top: 18px; margin-top: 70px; }
+.work-card:first-child { align-self: start; }
+.work-info .eyebrow { color: #b53d24; }
+.work-info h3 { font-weight: 600; }
+.work-info h3 span { color: #80594d; }
+.work-symbol { color: #c34324; }
+.work-description { color: #714f49; }
+.demo-note { color: #7a5c55; }
+.media-type { background: #fff4e9e8; color: #713520; }
+.view-image { background: #fff4e9ed; color: #713520; }
+.media-error { background: #fff0e5f5; color: #663a2a; }
+.strength-grid { gap: 20px; }
+.strength-card {
+  --card-accent: #e65b2c;
+  padding: 27px 25px 30px;
+  background: #ffd6bd;
+  border: 1px solid #fff6eb;
+  border-top: 4px solid #fa7539;
+}
+.strength-card:nth-child(2) { --card-accent:#a8780a; background:#ffe791; border-color:#fff5cf; border-top-color:#efb816; }
+.strength-card:nth-child(3) { --card-accent:#8351c5; background:#dfcaff; border-color:#f5ebff; border-top-color:#a071ee; }
+.strength-card:nth-child(4) { --card-accent:#3975c7; background:#c3ddff; border-color:#eaf3ff; border-top-color:#589cf0; }
+.strength-card:hover { background: #fff5ee; transform: translateY(-5px); }
+.strength-top,.strength-top > span:first-child { color: #574448; }
+.strength-top > span:first-child { font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--card-accent); }
+.strength-card h3 { color: #3c2d32; font-weight: 500; }
+.strength-card > p { color: #624e58; }
+.line-art i { border-color: var(--card-accent); }
+.line-art i:nth-child(4) { border-color: var(--card-accent); }
+.tags > span { border-color: #8a626e70; color: #684657; background: #ffffff20; }
+.contact { background: #ff815c; border-top: 16px solid #ffffff; color: #3d201c; }
+.contact-intro { color: #6f3023; }
+.contact h2 { font-weight: 600; }
+.contact h2 > span { color: #fff4e9; }
+.contact-arrow { border-color: #793522; background: #ffda64; }
+.contact-arrow:hover { background: #ffcb32; }
+.contact-details p { color: #783423; }
+.copy-button { color: #742d1d; }
+footer { border-color: #b84f324f; color: #6a3024; }
+footer .wordmark span { color: #6a3024; }
+.image-dialog { border-color: #ccb6ae; background: #fff6ef; color: #633b32; }
+.image-dialog::backdrop { background: #392832e6; }
+.dialog-close { border-color: #ac715a; }
+@media (min-width:1900px) { .hero .poster-title { font-size:348px; } }
+@media (max-width:1100px) { .hero .poster-title { font-size:18.3vw; } }
+@media (max-width:700px) {
+  .hero .poster-title { font-size:18.2vw; }
+  .section-space { padding-top:74px; padding-bottom:74px; }
+  .portrait-frame { padding:20px 35px 0; }
+  .stats { padding:22px 12px; }
+  .stats > div + div { padding-left:12px; }
+  .work-card { padding:12px 12px 18px; }
+  .work-card.offset { padding-top:12px; margin-top:0; }
+  .strength-grid { gap:12px; }
+  .strength-card { padding:20px 16px; }
+  .contact { border-top-width:12px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero-visual video { animation:none; transform:none; }
+}
+
+/* Fixed glass navigation and consistent interactive color feedback. */
+.navigation {
+  position:fixed;
+  z-index:50;
+  transition:background-color .25s,box-shadow .25s,border-color .25s;
+  border-bottom:1px solid transparent;
+}
+.navigation.is-scrolled {
+  background:rgba(255,246,241,.79);
+  backdrop-filter:blur(22px) saturate(140%);
+  -webkit-backdrop-filter:blur(22px) saturate(140%);
+  border-bottom-color:rgba(255,255,255,.72);
+  box-shadow:0 6px 28px #66291914;
+}
+.navigation nav a { padding:10px 12px; margin-inline:-12px; }
+:is(button,a,summary),.image-open .view-image {
+  transition:background-color .22s,color .22s,border-color .22s,box-shadow .22s,transform .22s;
+}
+:is(.nav-contact,.poster-cta,.video-toggle,.copy-button,.dialog-close,.button):is(:hover,:focus-visible):not(:disabled) {
+  background:#bd3e22;
+  color:#fff;
+  border-color:#bd3e22;
+}
+.poster-cta { padding-inline:12px; }
+.navigation nav a:is(:hover,:focus-visible) { color:#932e1a; background:#ffd4ba; }
+:is(.text-link,.scroll-link,footer>a:last-child,.contact-details a):is(:hover,:focus-visible) { color:#993720; background:#ffdbc2; }
+.text-link { width:fit-content; padding:8px 10px; margin-left:-10px; }
+.scroll-link,footer>a:last-child,.contact-details a { padding:7px 9px; margin-left:-9px; }
+.contact-arrow:is(:hover,:focus-visible) { color:white; background:#bd3e22; border-color:#bd3e22; }
+.wordmark:is(:hover,:focus-visible),.wordmark:is(:hover,:focus-visible) span { color:#d44b29; }
+.image-open:is(:hover,:focus-visible) .view-image { color:white; background:#bd3e22; }
+.image-open:is(:hover,:focus-visible) { box-shadow:0 0 0 3px #ef885f; }
+.experience-row summary:is(:hover,:focus-visible) { color:#8f321e; background:#ffd5bf; }
+@supports not (backdrop-filter:blur(1px)) { .navigation.is-scrolled { background:#fff2e9; } }
+@media (prefers-reduced-motion:reduce) { .navigation,:is(button,a,summary),.image-open .view-image { transition:none; } }
+
+
+/* Punchier editorial accents paired with a neutral canvas. */
+.work-card.offset { background:#e5d8fc; }
+.stats strong { color:#b64220; }
+.contact-arrow { color:#512718; }
+.hero a:focus-visible,.hero button:focus-visible,.navigation a:focus-visible { outline-color:#c34324; }

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env*
+*.log
+.DS_Store
+.vite/
+.cache/
+.sites-runtime/
+tools/ffmpeg/
+.netlify/
+
+# Local browser verification helpers depend on a machine-specific Playwright path.
+verify-*.cjs

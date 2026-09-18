@@ -1,0 +1,12 @@
+// Owner-supplied media from Desktop/机器人. Image titles are descriptive display titles.
+export const works = [
+  { id:'ad-01', kind:'video', type:'AI 广告', title:'耳机广告', english:'HEADPHONES / COMMERCIAL', description:'以悬浮耳机、金属质感与环形光线构建科技产品的视觉氛围。', cover:'/media/works/headphones.jpg', src:'/media/works/headphones.mp4', status:'published', accent:'orange' },
+  { id:'ad-02', kind:'video', type:'AI 广告', title:'口红广告', english:'LIPSTICK / COMMERCIAL', description:'以人物近景与唇色呈现美妆广告的视觉表达。', cover:'/media/works/lipstick.jpg', src:'/media/works/lipstick.mp4', status:'published', accent:'purple' },
+  { id:'cg-01', kind:'video', type:'游戏 CG', title:'游戏 CG', english:'GAME CINEMATIC', description:'森林中的弓箭手与幽暗环境，探索奇幻角色的电影感呈现。', cover:'/media/works/game-cg.jpg', src:'/media/works/game-cg.mp4', status:'published', accent:'blue' },
+  { id:'drama-01', kind:'video', type:'AI 短剧', title:'AI 短剧', english:'AI SHORT DRAMA', description:'围绕机器人与狗狗的生活场景展开 AI 叙事探索。', cover:'/media/works/short-drama.jpg', src:'/media/works/short-drama.mp4', status:'published', accent:'yellow' },
+  { id:'image-01', kind:'image', type:'AI 叙事图像', title:'城市的另一面', english:'THE OTHER SIDE', description:'夕阳下的旧街巷与远处高楼同框，以人物、光线和环境细节构建叙事。', cover:'/media/works/image-01.png', src:'/media/works/image-01.png', status:'published', accent:'orange' },
+  { id:'image-02', kind:'image', type:'AI 时尚视觉', title:'静默的时尚', english:'QUIET FASHION', description:'人物、皮革与岩石质感相互映衬，结合杂志式字体编排的时尚视觉练习。', cover:'/media/works/image-02.png', src:'/media/works/image-02.png', status:'published', accent:'purple' },
+  { id:'image-03', kind:'image', type:'AI 拼贴艺术', title:'脑海中的世界', english:'WORLDS WITHIN', description:'将人物侧影、山海、城市与天体拼接在一起，呈现复古纸张质感的想象空间。', cover:'/media/works/image-03.png', src:'/media/works/image-03.png', status:'published', accent:'blue' },
+  { id:'image-04', kind:'image', type:'AI 场景设计', title:'云端的家', english:'HOME ABOVE THE CLOUDS', description:'机器人和狗狗坐在浮岛小屋前，让暖色夕阳与童话场景传递陪伴感。', cover:'/media/works/image-04.png', src:'/media/works/image-04.png', status:'published', accent:'yellow' },
+  { id:'image-05', kind:'image', type:'AI 风景视觉', title:'云海日出', english:'SUNRISE ABOVE THE CLOUDS', description:'悬崖栈道、远山与云海交织，以金色晨光营造辽阔的空间层次。', cover:'/media/works/image-05.png', src:'/media/works/image-05.png', status:'published', accent:'orange' },
+]
