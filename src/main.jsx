@@ -50,7 +50,7 @@ function App() {
   const copyEmail = async () => { try { await navigator.clipboard.writeText(email); setCopied('email'); setTimeout(() => setCopied(''), 2500) } catch { window.location.href = `mailto:${email}` } }
   const copyWechat = async () => { try { await navigator.clipboard.writeText('Gsl2998052700'); setCopied('wechat') } catch { setCopied('manual') } setTimeout(() => setCopied(''), 3000) }
   return <>
-    <header className={`navigation${scrolled ? ' is-scrolled' : ''}`}><a href="#home" className="wordmark" aria-label="熊启懿 首页">XQ<span>Y</span><i>®</i></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#works">AI 作品</a><a href="#strengths">个人优势</a></nav><a className="nav-contact" href="#contact">聊聊新可能 <Arrow /></a></header>
+    <header className={`navigation${scrolled ? ' is-scrolled' : ''}`}><a href="#home" className="wordmark" aria-label="熊启懿 首页">XQ<span>Y</span><i>®</i></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#works">作品与案例</a><a href="#strengths">个人优势</a></nav><a className="nav-contact" href="#contact">聊聊新可能 <Arrow /></a></header>
     <main>
       <section className="hero" id="home" style={{ '--sculpture-motion': playing ? 'running' : 'paused' }}>
         <div className="hero-visual"><video ref={heroRef} muted loop playsInline preload="auto" poster={media + 'studio-sculpture.png'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)} aria-label="彩色悬浮装置，AI 图像动态演示背景"><source src={media + 'studio-sculpture.mp4'} type="video/mp4" /></video></div>
