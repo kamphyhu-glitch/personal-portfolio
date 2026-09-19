@@ -1,5 +1,6 @@
 // Owner-supplied media from Desktop/机器人. Image titles are descriptive display titles.
 export const works = [
+  { id:'flowpilot', kind:'case-study', type:'AI Product / Agent Experience', title:'FlowPilot', english:'AI NATIVE TASK COLLABORATION AGENT', description:'An AI-native task collaboration Agent for planning, tool use, memory, approval and evaluation.', cover:'/media/flowpilot/flowpilot-planning.png', slug:'/flowpilot/', status:'published', accent:'orange' },
   { id:'ad-01', kind:'video', type:'AI 广告', title:'耳机广告', english:'HEADPHONES / COMMERCIAL', description:'以悬浮耳机、金属质感与环形光线构建科技产品的视觉氛围。', cover:'/media/works/headphones.jpg', src:'/media/works/headphones.mp4', status:'published', accent:'orange' },
   { id:'ad-02', kind:'video', type:'AI 广告', title:'口红广告', english:'LIPSTICK / COMMERCIAL', description:'以人物近景与唇色呈现美妆广告的视觉表达。', cover:'/media/works/lipstick.jpg', src:'/media/works/lipstick.mp4', status:'published', accent:'purple' },
   { id:'cg-01', kind:'video', type:'游戏 CG', title:'游戏 CG', english:'GAME CINEMATIC', description:'森林中的弓箭手与幽暗环境，探索奇幻角色的电影感呈现。', cover:'/media/works/game-cg.jpg', src:'/media/works/game-cg.mp4', status:'published', accent:'blue' },

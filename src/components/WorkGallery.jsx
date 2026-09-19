@@ -6,12 +6,15 @@ import './WorkGallery.css'
 function Cover({ work, index }) {
   return <div className={`case-cover tone-${work.accent}`}>
     {work.cover ? <img src={work.cover} alt={work.title} loading="lazy"/> : <div className="cover-draft" aria-label="待补充作品封面"><span>{work.kind === 'video' ? 'MOTION' : 'IMAGE'} / STUDY</span><strong>{String(index + 1).padStart(2,'0')}</strong><span>{work.english}</span></div>}
-    <span className="case-status">{work.status === 'pending' ? '素材整理中' : work.status === 'demo' ? '本站演示' : work.kind === 'video' ? 'VIDEO' : 'IMAGE'}</span>
+    <span className="case-status">{work.status === 'pending' ? '素材整理中' : work.status === 'demo' ? '本站演示' : work.kind === 'case-study' ? 'CASE STUDY' : work.kind === 'video' ? 'VIDEO' : 'IMAGE'}</span>
     <span className="case-overlay">查看项目详情 <span aria-hidden="true">↗</span></span>
   </div>
 }
 function CaseCard({ work, index, open }) {
   return <article className={`case-card case-${work.id}`}><button className="case-open" onClick={event => open(work,event.currentTarget)} aria-label={`查看${work.title}详情`}><Cover work={work} index={index}/><div className="case-heading"><div><p>{work.type}</p><h3>{work.title}</h3></div><span className="case-arrow" aria-hidden="true">↗</span></div><p className="case-description">{work.description}</p></button></article>
+}
+function CaseStudyCard({ work }) {
+  return <article className={`case-card case-study-card case-${work.id}`}><a className="case-open case-study-link" href={work.slug} aria-label={`查看${work.title}完整案例`}><Cover work={work} index={0}/><div className="case-heading"><div><p>{work.type}</p><h3>{work.title}</h3></div><span className="case-arrow" aria-hidden="true">↗</span></div><p className="case-description">{work.description}</p></a></article>
 }
 export default function WorkGallery() {
   const [selected,setSelected] = useState(null)
@@ -31,6 +34,8 @@ export default function WorkGallery() {
   const close = () => dialogRef.current.close()
   const afterClose = () => { playerRef.current?.pause(); setSelected(null); triggerRef.current?.focus({preventScroll:true}) }
   return <>
+    <div className="collection-header product-header"><span>00 / PRODUCT</span><h3>从功能设计，到可信赖的 Agent Experience。</h3><span>FEATURED CASE STUDY</span></div>
+    <div className="case-study-grid">{works.filter(work=>work.kind==='case-study').map(work=><CaseStudyCard key={work.id} work={work}/>)}</div>
     <div className="collection-header"><span>01 / MOTION</span><h3>用镜头，讲一个好故事。</h3><span>2 支广告 · 1 部游戏 CG · 1 部 AI 短剧</span></div>
     <div className="film-grid">{works.filter(work=>work.kind==='video').map((work,index)=><CaseCard key={work.id} work={work} index={index} open={open}/>)}</div>
     <div className="collection-header image-header"><span>02 / STILL</span><h3>把想象，定格成画面。</h3><span>AI IMAGE EXPLORATIONS</span></div>

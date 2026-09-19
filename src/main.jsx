@@ -4,6 +4,7 @@ import './style.css'
 import './hero.css'
 import './theme.css'
 import WorkGallery from './components/WorkGallery'
+import FlowPilotCaseStudy from './components/FlowPilotCaseStudy'
 import ShinyText from './components/ShinyText'
 import ProfileCard from './components/ProfileCard'
 import './profile.css'
@@ -85,7 +86,8 @@ function App() {
 
   </>
 }
-createRoot(document.getElementById('root')).render(<App />)
+const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+createRoot(document.getElementById('root')).render(currentPath === '/flowpilot' ? <FlowPilotCaseStudy /> : <App />)
 
 
 
