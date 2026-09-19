@@ -34,9 +34,9 @@ export default function WorkGallery() {
   const close = () => dialogRef.current.close()
   const afterClose = () => { playerRef.current?.pause(); setSelected(null); triggerRef.current?.focus({preventScroll:true}) }
   return <>
-    <div className="collection-header product-header"><span>00 / PRODUCT</span><h3>从功能设计，到可信赖的 Agent Experience。</h3><span>FEATURED CASE STUDY</span></div>
+    <div className="collection-header product-header"><span>00 / PRODUCT / CASE STUDY</span><h3>从功能设计，到可信赖的 Agent Experience。</h3><span>FEATURED CASE STUDY</span></div>
     <div className="case-study-grid">{works.filter(work=>work.kind==='case-study').map(work=><CaseStudyCard key={work.id} work={work}/>)}</div>
-    <div className="collection-header"><span>01 / MOTION</span><h3>用镜头，讲一个好故事。</h3><span>2 支广告 · 1 部游戏 CG · 1 部 AI 短剧</span></div>
+    <div className="collection-header"><span>01 / AIGC / MOTION / VISUAL</span><h3>用镜头，讲一个好故事。</h3><span>2 支广告 · 1 部游戏 CG · 1 部 AI 短剧</span></div>
     <div className="film-grid">{works.filter(work=>work.kind==='video').map((work,index)=><CaseCard key={work.id} work={work} index={index} open={open}/>)}</div>
     <div className="collection-header image-header"><span>02 / STILL</span><h3>把想象，定格成画面。</h3><span>AI IMAGE EXPLORATIONS</span></div>
     <AccordionGallery items={works.filter(work=>work.kind==='image').map(work=>({image:work.cover,label:work.title,alt:work.description,type:work.type,work}))} defaultIndex={2} height={500} radius={12} gap={12} expandRatio={0.56} grayscale={false} tilt={4} accentColor="#ffae82" onSelect={(item,trigger)=>open(item.work,trigger)}/>
