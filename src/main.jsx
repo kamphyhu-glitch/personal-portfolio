@@ -5,7 +5,8 @@ import './hero.css'
 import './theme.css'
 import WorkGallery from './components/WorkGallery'
 import FlowPilotCaseStudy from './components/FlowPilotCaseStudy'
-import ShinyText from './components/ShinyText'
+import AsmrMiniatureCaseStudy from './components/AsmrMiniatureCaseStudy'
+import ContentOperationsCaseStudy from './components/ContentOperationsCaseStudy'
 import ProfileCard from './components/ProfileCard'
 import './profile.css'
 import './mobile.css'
@@ -29,7 +30,8 @@ function Arrow({ diagonal = false }) { return <span aria-hidden="true">{diagonal
 function SectionLabel({ number, children }) { return <div className="section-label"><span>{number} /</span>{children}</div> }
 
 function App() {
-  const heroRef = useRef(null)
+  const heroVisualRef = useRef(null)
+  const heroVideoRef = useRef(null)
   const [playing, setPlaying] = useState(false)
   const [heroError, setHeroError] = useState(false)
   const [copied, setCopied] = useState('')
@@ -42,27 +44,67 @@ function App() {
   }, [])
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const update = () => { if (preference.matches) heroRef.current?.pause(); else heroRef.current?.play().catch(() => {}) }
-    update(); preference.addEventListener('change', update)
-    return () => preference.removeEventListener('change', update)
+    const updatePlayback = () => {
+      const video = heroVideoRef.current
+      if (!video) return
+      if (preference.matches) video.pause()
+      else video.play().catch(() => setPlaying(false))
+    }
+    updatePlayback()
+    preference.addEventListener('change', updatePlayback)
+    return () => preference.removeEventListener('change', updatePlayback)
   }, [])
-  const toggleVideo = () => { const video = heroRef.current; if (video.paused) video.play().catch(() => setHeroError(true)); else video.pause() }
+  const updateHeroParallax = (event) => {
+    if (!heroVisualRef.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = (event.clientX - rect.left) / rect.width - 0.5
+    const y = (event.clientY - rect.top) / rect.height - 0.5
+    heroVisualRef.current.style.setProperty('--hero-parallax-x', `${x * 10}px`)
+    heroVisualRef.current.style.setProperty('--hero-parallax-y', `${y * 8}px`)
+  }
+  const resetHeroParallax = () => {
+    heroVisualRef.current?.style.setProperty('--hero-parallax-x', '0px')
+    heroVisualRef.current?.style.setProperty('--hero-parallax-y', '0px')
+  }
+  const toggleHeroVideo = () => {
+    const video = heroVideoRef.current
+    if (!video || heroError) return
+    if (video.paused) video.play().catch(() => setHeroError(true))
+    else video.pause()
+  }
   const copyEmail = async () => { try { await navigator.clipboard.writeText(email); setCopied('email'); setTimeout(() => setCopied(''), 2500) } catch { window.location.href = `mailto:${email}` } }
   const copyWechat = async () => { try { await navigator.clipboard.writeText('Gsl2998052700'); setCopied('wechat') } catch { setCopied('manual') } setTimeout(() => setCopied(''), 3000) }
   return <>
     <header className={`navigation${scrolled ? ' is-scrolled' : ''}`}><a href="#home" className="wordmark" aria-label="熊启懿 首页">XQ<span>Y</span><i>®</i></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#works">作品与案例</a><a href="#strengths">个人优势</a></nav><a className="nav-contact" href="#contact">聊聊新可能 <Arrow /></a></header>
     <main>
-      <section className="hero" id="home" style={{ '--sculpture-motion': playing ? 'running' : 'paused' }}>
-        <div className="hero-visual"><video ref={heroRef} muted loop playsInline preload="auto" poster={media + 'studio-sculpture.png'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)} aria-label="彩色悬浮装置，AI 图像动态演示背景"><source src={media + 'studio-sculpture.mp4'} type="video/mp4" /></video></div>
-        <div className="hero-shade" />
-        <div className="hero-registration" aria-hidden="true"><i/><i/><i/><i/></div>
+      <section className="hero editorial-hero" id="home" onPointerMove={updateHeroParallax} onPointerLeave={resetHeroParallax}>
         <div className="hero-content wrap">
-          <div className="poster-topline"><span className="poster-year">2026</span><span className="poster-edition">RESEARCH & CREATION<br/>PERSONAL PROFILE — VOL. 01</span></div>
-          <h1 className="poster-title" aria-label="熊启懿的个人作品集与能力档案"><ShinyText text="PROFILE" speed={3.2} delay={1.2} color="#ece6dc" shineColor="#ffffff" spread={115} disabled={!playing}/></h1>
-          <div className="poster-byline"><div><strong>XIONG QIYI</strong><span>熊启懿 / 华南理工大学研究生</span></div><p>AI FILMMAKING<br/>& CREATIVE WORKFLOWS</p></div>
-          <div className="poster-intro"><p className="hero-description">以理性探索，用 AI 创造。<span>AI 视频 · 广告分镜 · AI 工作流。</span></p><a className="poster-cta" href="#works">探索我的作品 <Arrow /></a></div>
+          <div className="editorial-hero-copy">
+            <p className="hero-eyebrow">2026 — RESEARCH &amp; CREATION</p>
+            <h1 className="editorial-title"><span>AI Filmmaking</span><em>&amp; Creative Workflows.</em></h1>
+            <div className="editorial-intro">
+              <p><strong>以理性探索，用 AI 创造。</strong><span>关注 AI 产品、生成式影像与创意技术，<br/>把想法做成真正可以体验的作品。</span></p>
+              <a className="poster-cta" href="#works">探索我的作品 <Arrow /></a>
+            </div>
+            <div className="hero-focus"><span className="hero-focus-label">FOCUS ON</span><div><span>AI PRODUCT</span><i/><span>AGENTS</span><i/><span>AIGC</span><i/><span>AI VIDEO</span><i/><span>CREATIVE TECHNOLOGY</span></div></div>
+          </div>
+
+          <div className="hero-projects" ref={heroVisualRef}>
+            <a href="#works" className="hero-project hero-project-lipstick" aria-label="浏览口红 AI 广告作品">
+              <img src={media + 'works/lipstick.jpg'} alt="口红 AI 广告真实画面" />
+              <span>03 / AI ADVERTISING<br/><strong>Lipstick Film</strong></span>
+            </a>
+            <a href="/flowpilot/" className="hero-project hero-project-main" aria-label="查看 FlowPilot AI Agent 项目">
+              <div className="hero-project-browser"><div className="browser-bar"><i/><i/><i/><span>FLOWPILOT / AGENT WORKSPACE</span></div><img src={media + 'flowpilot/flowpilot-planning.png'} alt="FlowPilot 多 Agent 任务规划界面" /></div>
+              <div className="hero-project-caption"><span>01 / FEATURED CASE</span><strong>FlowPilot</strong><small>AI Agent · Product Design · Prototyping</small></div>
+            </a>
+            <div className="hero-project hero-project-aux hero-project-asmr">
+              <a href="/asmr-miniature/" className="hero-aux-link" aria-label="查看 ASMR 风格微缩模型展示项目"><video ref={heroVideoRef} muted loop playsInline preload="metadata" poster={media + 'asmr-miniature/cover.webp'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)}><source src={media + 'asmr-miniature/final-video.mp4'} type="video/mp4" /></video><span>02 / AI VIDEO<br/><strong>Miniature ASMR</strong></span></a>
+              <button className="hero-video-toggle" type="button" onClick={toggleHeroVideo} disabled={heroError} aria-label={playing ? '暂停 ASMR 项目视频' : '播放 ASMR 项目视频'}>{heroError ? '静态封面' : playing ? 'Ⅱ' : '▶'}</button>
+            </div>
+          </div>
         </div>
-        <div className="hero-bottom wrap"><a href="#about" className="scroll-link"><span>↓</span> 向下探索 <small>SCROLL TO DISCOVER</small></a><span className="hero-caption">AI VISUAL EXPLORATION — 001</span><button className="video-toggle" onClick={toggleVideo} disabled={heroError} aria-label={playing ? '暂停背景视频' : '播放背景视频'}>{heroError ? '静态封面' : playing ? 'Ⅱ 暂停' : '▷ 播放'}</button></div>
+        <div className="hero-bottom wrap"><span>01</span><i/><a href="#works">SCROLL TO DISCOVER ↓</a></div>
       </section>
 
       <section className="about wrap section-space" id="about">
@@ -77,17 +119,24 @@ function App() {
         <div className="experience"><div className="experience-heading"><h3>把探索，落在实际问题上</h3><span>SELECTED EXPERIENCE / 2023 — NOW</span></div>{projects.map(([date,title,role,description,stack],i) => <details key={title} className="experience-row"><summary><span className="experience-date">{date}</span><strong>{title}</strong><span className="experience-role">{role}</span><span className="expand-icon">+</span></summary><div className="experience-detail"><p>{description}</p><span>{stack}</span></div></details>)}</div>
       </section>
 
-      <section className="works section-space" id="works"><div className="wrap"><SectionLabel number="02">SELECTED WORK · 作品与案例</SectionLabel><div className="section-heading"><h2>画面有想法，<br/>作品有故事。</h2><p>从广告到叙事，从动态到静帧。<br/>探索 AI 创作的不同表达。</p></div><WorkGallery/></div></section>
+      <section className="works section-space" id="works"><div className="wrap"><SectionLabel number="02">SELECTED WORK · 作品与案例</SectionLabel><div className="section-heading"><h2>画面有想法，<br/>作品有故事。</h2><p>从产品到影像，从动态到静帧。<br/>探索 AI 创作的不同表达。</p></div><WorkGallery/></div></section>
 
       <section className="strengths wrap section-space" id="strengths"><SectionLabel number="03">MY APPROACH · 个人优势</SectionLabel><div className="section-heading"><h2>理性为底，创造为翼。</h2><p>从提出问题，<br/>到让想法真正发生。</p></div><div className="strength-grid">{strengths.map(([n,title,label,description,tags]) => <article className="strength-card" key={n}><div className="strength-top"><span>{n}</span><span>{label}</span></div><div className={'line-art art-' + n} aria-hidden="true"><i/><i/><i/><i/></div><h3>{title}</h3><p>{description}</p><div className="tags">{tags.map(tag => <span key={tag}>{tag}</span>)}</div></article>)}</div></section>
 
-      <section className="contact" id="contact"><div className="wrap contact-inner"><SectionLabel number="04">LET’S CONNECT · 联系我</SectionLabel><p className="contact-intro">好的想法，往往始于一次交流。</p><h2>下一个可能，<br/><span>一起创造。</span><a href={`mailto:${email}`} className="contact-arrow" aria-label="通过邮件联系熊启懿">↗</a></h2><div className="contact-details"><div><p>EMAIL</p><a href={`mailto:${email}`}>{email}</a><button onClick={copyEmail} className="copy-button" aria-label="复制邮箱地址">{copied === 'email' ? '已复制 ✓' : '复制 ↗'}</button><span className="sr-only" role="status">{copied === 'email' ? '邮箱地址已复制' : copied === 'wechat' ? '微信号已复制' : ''}</span></div><div><p>PHONE</p><a href="tel:13708820988">+86 137 0882 0988</a></div><div><p>WECHAT</p><span className="wechat-id">Gsl2998052700</span><button onClick={copyWechat} className="copy-button" aria-label="复制微信号">{copied === 'wechat' ? '已复制 ✓' : '复制 ↗'}</button>{copied === 'manual' && <small role="status">请选中微信号复制</small>}</div></div><footer><a className="wordmark" href="#home">XQ<span>Y</span></a><p>© {new Date().getFullYear()} 熊启懿 · 个人作品集</p><a href="#home">回到顶部 ↑</a></footer></div></section>
+      <section className="contact" id="contact"><div className="wrap contact-inner"><SectionLabel number="04">LET’S CONNECT · 联系我</SectionLabel><div className="contact-status"><i/>AVAILABLE FOR AI PRODUCT &amp; CREATIVE WORK</div><p className="contact-intro">好的想法，往往始于一次交流。</p><h2>下一个可能，<br/><span>一起创造。</span><a href={`mailto:${email}`} className="contact-arrow" aria-label="通过邮件联系熊启懿">↗</a></h2><div className="contact-details"><div><p>EMAIL</p><a href={`mailto:${email}`}>{email}</a><button onClick={copyEmail} className="copy-button" aria-label="复制邮箱地址">{copied === 'email' ? '已复制 ✓' : '复制 ↗'}</button><span className="sr-only" role="status">{copied === 'email' ? '邮箱地址已复制' : copied === 'wechat' ? '微信号已复制' : ''}</span></div><div><p>PHONE</p><a href="tel:13708820988">+86 137 0882 0988</a></div><div><p>WECHAT</p><span className="wechat-id">Gsl2998052700</span><button onClick={copyWechat} className="copy-button" aria-label="复制微信号">{copied === 'wechat' ? '已复制 ✓' : '复制 ↗'}</button>{copied === 'manual' && <small role="status">请选中微信号复制</small>}</div></div><footer><a className="wordmark" href="#home">XQ<span>Y</span></a><p>© {new Date().getFullYear()} 熊启懿 · 个人作品集</p><a href="#home">回到顶部 ↑</a></footer></div></section>
     </main>
 
   </>
 }
 const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
-createRoot(document.getElementById('root')).render(currentPath === '/flowpilot' ? <FlowPilotCaseStudy /> : <App />)
+const page = currentPath === '/flowpilot'
+  ? <FlowPilotCaseStudy />
+  : currentPath === '/asmr-miniature'
+    ? <AsmrMiniatureCaseStudy />
+    : currentPath === '/content-operations'
+      ? <ContentOperationsCaseStudy />
+    : <App />
+createRoot(document.getElementById('root')).render(page)
 
 
 

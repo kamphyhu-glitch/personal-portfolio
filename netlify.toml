@@ -12,6 +12,26 @@
   to = "/index.html"
   status = 200
 
+[[redirects]]
+  from = "/asmr-miniature/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/asmr-miniature/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/content-operations/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/content-operations/*"
+  to = "/index.html"
+  status = 200
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
