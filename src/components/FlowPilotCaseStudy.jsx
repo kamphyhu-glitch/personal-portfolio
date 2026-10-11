@@ -59,19 +59,19 @@ export default function FlowPilotCaseStudy() {
     <main id="top">
       <section className="flowpilot-hero flowpilot-shell">
         <div className="flowpilot-hero-copy">
-          <p className="flowpilot-kicker">AI PRODUCT · AGENT EXPERIENCE · 2026</p>
+          <p className="flowpilot-kicker">AI PRODUCT · LIVE LLM AGENT · 2026</p>
           <h1>FlowPilot</h1>
-          <p className="flowpilot-subtitle">AI Native Task Collaboration Agent</p>
-          <p className="flowpilot-lead">An AI-native task collaboration Agent that turns complex goals into explainable, controllable and memory-aware actions.</p>
-          <p className="flowpilot-lead flowpilot-lead--cn flowpilot-lead--desktop">一个围绕任务规划、工具调用、用户审批、长期记忆与 Agent Evaluation 设计的 AI 原生任务协作产品原型。</p>
-          <p className="flowpilot-lead flowpilot-lead--cn flowpilot-lead--mobile">一个让复杂任务规划、审批与记忆影响变得可控、可见的 AI Agent 原型。</p>
-          <div className="flowpilot-tags" aria-label="项目标签"><span>AI Product</span><span>Agent UX</span><span className="flowpilot-tag--secondary">Task Planning</span><span>Memory</span><span className="flowpilot-tag--secondary">Evaluation</span></div>
+          <p className="flowpilot-subtitle">DeepSeek-powered Task Collaboration Agent</p>
+          <p className="flowpilot-lead">A working AI Agent that uses a real LLM to understand goals, call tools and produce structured plans—while keeping constraints, approvals and fallbacks under product control.</p>
+          <p className="flowpilot-lead flowpilot-lead--cn flowpilot-lead--desktop">一个接入 DeepSeek 的 AI 原生任务协作产品：模型负责目标理解、工具选择与计划生成，应用层负责硬约束校验、用户审批和安全执行。</p>
+          <p className="flowpilot-lead flowpilot-lead--cn flowpilot-lead--mobile">一个接入 DeepSeek、同时保留约束校验与用户审批的可运行 AI Agent。</p>
+          <div className="flowpilot-tags" aria-label="项目标签"><span>DeepSeek</span><span>Live LLM</span><span>Agent UX</span><span className="flowpilot-tag--secondary">Tool Calling</span><span>Memory</span><span className="flowpilot-tag--secondary">Evaluation</span></div>
           <div className="flowpilot-hero-actions"><ExternalLink href={liveDemo} primary>Live Demo</ExternalLink><ExternalLink href={github}>GitHub</ExternalLink></div>
         </div>
         <dl className="flowpilot-meta">
-          <div><dt>Role</dt><dd>Product Design / Agent Experience / Prototype</dd></div>
-          <div><dt>Duration</dt><dd>2026.09</dd></div>
-          <div><dt>Tools</dt><dd>Codex / Next.js / React / TypeScript</dd></div>
+          <div><dt>Role</dt><dd>Product Design / Agent Experience / Implementation</dd></div>
+          <div><dt>Duration</dt><dd>2026.09 — 2026.10</dd></div>
+          <div><dt>Stack</dt><dd>DeepSeek Responses API / Next.js / React / TypeScript</dd></div>
         </dl>
         <Screenshot src="flowpilot-planning.png" alt="FlowPilot Agent Workspace：面试日任务规划、审批、工具活动与 Agent Trace" className="flowpilot-hero-shot"/>
       </section>
@@ -82,7 +82,7 @@ export default function FlowPilotCaseStudy() {
           <div className="flowpilot-prose">
             <p>大多数 AI Assistant 擅长回答问题，但当用户提出一个包含时间、偏好、任务优先级和外部工具的复杂目标时，仅仅生成一段建议往往不够。</p>
             <p>我希望进一步探索：如果 AI 开始替用户规划任务并执行操作，产品应该如何保证它既智能，又可控、可解释、可评估？</p>
-            <p>FlowPilot 因此被设计为一个 AI-native Task Collaboration Agent。它不仅生成计划，还能够读取长期记忆、拆解任务、调用工具、请求用户审批、执行操作，并解释自己的决策过程。</p>
+            <p>FlowPilot 因此被设计为一个 AI-native Task Collaboration Agent。当前版本已接入 DeepSeek：模型理解目标、选择工具并生成结构化计划；应用层继续负责 Memory 注入、硬约束校验、审批与持久化，让智能能力进入真实产品闭环。</p>
           </div>
           <aside className="flowpilot-question"><span>DESIGN QUESTION</span><strong>What makes an Agent trustworthy?</strong><p>能力提升的同时，如何保留用户控制、决策透明度和可重复评估？</p></aside>
         </div>
@@ -94,8 +94,22 @@ export default function FlowPilotCaseStudy() {
 
       <section className="flowpilot-section flowpilot-section--tint">
         <div className="flowpilot-shell">
-          <SectionHeading number="02" eyebrow="TASK PLANNING · TOOL USE · USER CONTROL" title="Turn complex goals into executable plans" intro="FlowPilot 将现实目标拆成可执行步骤，组合多个工具，并通过 Tool Activity 与 Agent Trace 让过程保持可见。"/>
+          <SectionHeading number="02" eyebrow="DEEPSEEK · TOOL CALLING · USER CONTROL" title="From a natural-language goal to a live Agent plan" intro="DeepSeek 负责理解开放目标、选择 Mock Tools，并结合工具结果生成结构化计划；运行来源、过程和 fallback 都在界面中保持可见。"/>
           <blockquote className="flowpilot-prompt">“我明天下午 3 点在深圳面试，还要学习 SQL，帮我安排一下。”</blockquote>
+          <div className="flowpilot-runtime" aria-label="DeepSeek live runtime flow">
+            <div className="flowpilot-runtime-copy">
+              <p className="flowpilot-mini-label">LIVE LLM RUNTIME</p>
+              <h3>DeepSeek plans. Product logic stays in control.</h3>
+              <p>Agent 通过服务端 Adapter 调用 DeepSeek Responses API。模型可以读取经过数量和长度限制的 Memory / Tasks 上下文，选择工具，并在多轮工具结果回传后生成计划。</p>
+              <div className="flowpilot-runtime-status"><span>LIVE · DEEPSEEK</span><span>FALLBACK · DETERMINISTIC</span></div>
+            </div>
+            <ol className="flowpilot-runtime-flow">
+              <li><span>01</span><strong>Goal + bounded context</strong><small>只发送当前目标与受限上下文</small></li>
+              <li><span>02</span><strong>DeepSeek tool selection</strong><small>选择 Calendar、Weather、Maps 等 Mock Tools</small></li>
+              <li><span>03</span><strong>Tool result handoff</strong><small>结果回传模型，生成结构化任务计划</small></li>
+              <li><span>04</span><strong>Validate + approve</strong><small>应用层校验硬约束，写操作仍需用户批准</small></li>
+            </ol>
+          </div>
           <Screenshot src="flowpilot-planning.png" alt="完整 Task Planning、Pending Approval、Tool Activity 与 Agent Trace 界面"/>
           <div className="flowpilot-planning-grid">
             <div><p className="flowpilot-mini-label">TASK PLANNING</p><ol className="flowpilot-step-list">{planningSteps.map(step=><li key={step}>{step}</li>)}</ol></div>
@@ -155,7 +169,7 @@ export default function FlowPilotCaseStudy() {
             <figure className="flowpilot-evidence-crop flowpilot-evidence-crop--evaluation"><img src={media + 'flowpilot-evaluation.png'} alt="Evaluation 局部：16 个固定案例、体验指标与结果区域"/><figcaption>16 cases · Experience metrics · Test results</figcaption></figure>
           </div>
           <div className="flowpilot-eval-grid">
-            <div className="flowpilot-metrics"><div><strong>16</strong><span>fixed evaluation cases</span></div><div><strong>5</strong><span>test files</span></div><div><strong>21</strong><span>automated tests</span></div><div><strong>7</strong><span>experience dimensions</span></div></div>
+            <div className="flowpilot-metrics"><div><strong>16</strong><span>fixed evaluation cases</span></div><div><strong>11</strong><span>test files</span></div><div><strong>36</strong><span>automated tests</span></div><div><strong>7</strong><span>experience dimensions</span></div></div>
             <div className="flowpilot-prose"><p>To avoid evaluating Agent quality only by intuition, I built a deterministic evaluation dashboard across planning, tool use, user control, memory compliance and constraint compliance.</p><p>Current Evaluation 使用 deterministic fixtures，并与真实 Tasks / Memory runtime data 隔离。它用于验证产品逻辑和体验机制，不代表生产级真实大模型 benchmark。</p></div>
           </div>
           <div className="flowpilot-eval-dimensions"><span>Intent Understanding</span><span>Task Planning</span><span>Tool Use</span><span>Context Consistency</span><span>User Control</span><span>Memory Compliance</span><span>Constraint Compliance</span></div>
@@ -164,21 +178,21 @@ export default function FlowPilotCaseStudy() {
       </section>
 
       <section className="flowpilot-section flowpilot-shell">
-        <SectionHeading number="07" eyebrow="TECHNICAL IMPLEMENTATION" title="Prototype Architecture" intro="优先验证 Agent 产品逻辑，以 deterministic scenarios 与 Mock Tools 构建稳定 Demo，同时保留接入真实 LLM 和外部 API 的模块边界。"/>
+        <SectionHeading number="07" eyebrow="TECHNICAL IMPLEMENTATION" title="Live LLM architecture with explicit safety boundaries" intro="真实 DeepSeek 规划路径与 deterministic fallback 共用稳定的运行时契约；模型提升开放任务理解能力，应用代码继续控制约束、审批与写操作。"/>
         <div className="flowpilot-architecture">
-          <article><span>FRONTEND</span><h3>Next.js / React / TypeScript / Tailwind</h3></article>
-          <article><span>PERSISTENCE</span><h3>Typed localStorage Repository</h3></article>
-          <article><span>STATE SYNC</span><h3>React useSyncExternalStore</h3></article>
-          <article><span>TESTING & DEPLOYMENT</span><h3>5 test files / 21 tests<br/>GitHub + Vercel</h3></article>
+          <article><span>LLM RUNTIME</span><h3>DeepSeek Responses API<br/>Multi-round tool result handoff</h3></article>
+          <article><span>SERVER ADAPTER</span><h3>Next.js API Route<br/>Typed runtime contract + output validation</h3></article>
+          <article><span>PRODUCT SAFETY</span><h3>Hard Constraint Validator<br/>Approval-gated writes + visible Agent Trace</h3></article>
+          <article><span>RESILIENCE</span><h3>Deterministic fallback<br/>11 test files / 36 automated tests</h3></article>
         </div>
-        <aside className="flowpilot-limitations"><p className="flowpilot-mini-label">CURRENT LIMITATIONS</p><ul><li>No real autonomous LLM</li><li>No real Calendar API</li><li>No real Weather API</li><li>No real Maps API</li><li>Deterministic evaluator</li><li>Browser localStorage persistence</li></ul></aside>
+        <aside className="flowpilot-limitations"><p className="flowpilot-mini-label">CURRENT BOUNDARIES</p><ul><li>Live mode requires a DeepSeek API key and network access</li><li>Calendar / Weather / Maps remain Mock Tools</li><li>Deterministic evaluator, not LLM-as-a-Judge</li><li>Browser localStorage persistence</li><li>No production authentication or multi-user backend</li><li>Invalid model output falls back visibly</li></ul></aside>
       </section>
 
       <section className="flowpilot-section flowpilot-section--closing">
         <div className="flowpilot-shell">
           <SectionHeading number="08" eyebrow="WHAT I LEARNED" title="What I learned from building FlowPilot"/>
           <div className="flowpilot-card-grid flowpilot-learning-grid">{learnings.map(([number,title,copy])=><article key={title}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
-          <div className="flowpilot-cta"><p className="flowpilot-kicker">EXPLORE THE PROTOTYPE</p><h2>Explore FlowPilot</h2><p>FlowPilot is an exploration of how AI Agents can become more capable without becoming less understandable or controllable.</p><div><ExternalLink href={liveDemo} primary>Live Demo</ExternalLink><ExternalLink href={github}>GitHub</ExternalLink></div></div>
+          <div className="flowpilot-cta"><p className="flowpilot-kicker">EXPLORE THE WORKING AGENT</p><h2>Explore FlowPilot</h2><p>Try the deterministic demo directly, or connect a session-only DeepSeek API key to experience live LLM planning with visible tools, constraints and approval gates.</p><div><ExternalLink href={liveDemo} primary>Live Demo</ExternalLink><ExternalLink href={github}>GitHub</ExternalLink></div></div>
           <footer className="flowpilot-footer"><a href="/">← 返回作品集首页</a><span>FlowPilot · AI Agent Case Study · 2026</span><a href="#top">回到顶部 ↑</a></footer>
         </div>
       </section>
