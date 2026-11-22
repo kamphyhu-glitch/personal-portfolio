@@ -16,6 +16,17 @@ function CaseCard({ work, index, open }) {
 function CaseStudyCard({ work }) {
   return <article className={`case-card case-study-card case-${work.id}`}><a className="case-open case-study-link" href={work.slug} aria-label={`查看${work.title}完整案例`}><Cover work={work} index={0}/><div className="case-heading"><div><p>{work.type}</p><h3>{work.title}</h3></div><span className="case-arrow" aria-hidden="true">↗</span></div><p className="case-description">{work.description}</p></a></article>
 }
+
+function CollectionHeading({ id, label, title, description }) {
+  return (
+    <header className="work-collection-heading">
+      <p className="work-collection-label">{label}</p>
+      <h2 id={id}>{title}</h2>
+      {description && <p className="work-collection-intro">{description}</p>}
+    </header>
+  )
+}
+
 export default function WorkGallery() {
   const [selected,setSelected] = useState(null)
   const [failed,setFailed] = useState(false)
@@ -34,14 +45,30 @@ export default function WorkGallery() {
   const close = () => dialogRef.current.close()
   const afterClose = () => { playerRef.current?.pause(); setSelected(null); triggerRef.current?.focus({preventScroll:true}) }
   return <>
-    <div className="collection-header product-header"><span>00 / PRODUCT / CASE STUDY</span><h3>从功能设计，到可信赖的 Agent Experience。</h3><span>FEATURED CASE STUDY</span></div>
-    <div className="case-study-grid">{works.filter(work=>work.kind==='case-study'&&!work.section).map(work=><CaseStudyCard key={work.id} work={work}/>)}</div>
-    <div className="collection-header"><span>01 / AIGC / MOTION / VISUAL</span><h3>用镜头，讲一个好故事。</h3><span>1 个 AI Video Case Study · 2 支广告 · 1 部游戏 CG · 1 部 AI 短剧</span></div>
-    <div className="film-grid">{works.filter(work=>work.kind==='video'||work.section==='aigc').map((work,index)=>work.kind==='case-study'?<CaseStudyCard key={work.id} work={work}/>:<CaseCard key={work.id} work={work} index={index} open={open}/>)}</div>
-    <div className="collection-header operations-header"><span>02 / CONTENT OPERATIONS</span><h3>从热点判断，到内容落地。</h3><span>INTERNSHIP CASE STUDY</span></div>
-    <div className="case-study-grid operations-grid">{works.filter(work=>work.kind==='case-study'&&work.section==='operations').map(work=><CaseStudyCard key={work.id} work={work}/>)}</div>
-    <div className="collection-header image-header"><span>03 / STILL</span><h3>把想象，定格成画面。</h3><span>AI IMAGE EXPLORATIONS</span></div>
-    <AccordionGallery items={works.filter(work=>work.kind==='image').map(work=>({image:work.cover,label:work.title,alt:work.description,type:work.type,work}))} defaultIndex={2} height={500} radius={12} gap={12} expandRatio={0.56} grayscale={false} tilt={4} accentColor="#ffae82" onSelect={(item,trigger)=>open(item.work,trigger)}/>
+    <section className="work-collection" aria-labelledby="product-works-title">
+      <CollectionHeading id="product-works-title" label="PRODUCT / CASE STUDY" title="AI 产品案例" />
+      <div className="case-study-grid product-case-grid">{works.filter(work=>work.kind==='case-study'&&!work.section).map(work=><CaseStudyCard key={work.id} work={work}/>)}</div>
+    </section>
+
+    <section className="work-collection" id="motion-works" aria-labelledby="motion-works-title">
+      <CollectionHeading
+        id="motion-works-title"
+        label="AIGC / MOTION / VISUAL"
+        title="画面有想法，作品有故事。"
+        description="从动态到静帧，探索 AI 创作的不同表达。"
+      />
+      <div className="film-grid motion-case-grid">{works.filter(work=>work.kind==='video'||work.section==='aigc').map((work,index)=>work.kind==='case-study'?<CaseStudyCard key={work.id} work={work}/>:<CaseCard key={work.id} work={work} index={index} open={open}/>)}</div>
+    </section>
+
+    <section className="work-collection" aria-labelledby="operations-works-title">
+      <CollectionHeading id="operations-works-title" label="CONTENT OPERATIONS" title="内容运营实践" />
+      <div className="case-study-grid operations-grid">{works.filter(work=>work.kind==='case-study'&&work.section==='operations').map(work=><CaseStudyCard key={work.id} work={work}/>)}</div>
+    </section>
+
+    <section className="work-collection" aria-labelledby="still-works-title">
+      <CollectionHeading id="still-works-title" label="STILL IMAGE" title="静帧视觉作品" />
+      <AccordionGallery items={works.filter(work=>work.kind==='image').map(work=>({image:work.cover,label:work.title,alt:work.description,type:work.type,work}))} defaultIndex={2} height={500} radius={12} gap={12} expandRatio={0.56} grayscale={false} tilt={4} accentColor="#ffae82" onSelect={(item,trigger)=>open(item.work,trigger)}/>
+    </section>
 
     <dialog ref={dialogRef} className="case-dialog" aria-labelledby="case-title" onClose={afterClose} onClick={event=>{if(event.target===dialogRef.current) close()}}>
       {selected && <><div className="case-dialog-top"><span>{selected.type}</span><button className="dialog-close" onClick={close} autoFocus aria-label="关闭项目详情">关闭 ×</button></div>

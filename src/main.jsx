@@ -11,8 +11,11 @@ import ContentOperationsCaseStudy from './components/ContentOperationsCaseStudy'
 import ProfileCard from './components/ProfileCard'
 import './profile.css'
 import './mobile.css'
+import './home-showcase.css'
+import { works } from './works'
 
 const media = '/media/'
+const featuredProducts = works.filter(work => work.featuredLabel)
 const email = '2998052700@qq.com'
 const projects = [
   ['2025.09 — 至今', '用户行为预测与因果归因', '核心研究课题', '以城市出行轨迹为研究对象，构建多维评估指标，结合 XGBoost 与 SHAP 探索非线性影响机制。', 'Python / SQL / XGBoost / SHAP'],
@@ -81,27 +84,35 @@ function App() {
       <section className="hero editorial-hero" id="home" onPointerMove={updateHeroParallax} onPointerLeave={resetHeroParallax}>
         <div className="hero-content wrap">
           <div className="editorial-hero-copy">
-            <p className="hero-eyebrow">2026 — RESEARCH &amp; CREATION</p>
-            <h1 className="editorial-title"><span>AI Filmmaking</span><em>&amp; Creative Workflows.</em></h1>
+            <p className="hero-eyebrow">熊启懿 · 个人作品集</p>
+            <h1 className="editorial-title"><span>AI Products</span><em>&amp; Creative Workflows.</em></h1>
             <div className="editorial-intro">
-              <p><strong>以理性探索，用 AI 创造。</strong><span>关注 AI 产品、生成式影像与创意技术，<br/>把想法做成真正可以体验的作品。</span></p>
-              <a className="poster-cta" href="#works">探索我的作品 <Arrow /></a>
+              <p><strong>从数据分析到任务协作</strong><span>我设计 AI Agent，也用生成式 AI 创作广告、游戏 CG 和短片。</span></p>
+              <a className="poster-cta" href="#works">浏览作品与案例 <Arrow /></a>
             </div>
-            <div className="hero-focus"><span className="hero-focus-label">FOCUS ON</span><div><span>AI PRODUCT</span><i/><span>AGENTS</span><i/><span>AIGC</span><i/><span>AI VIDEO</span><i/><span>CREATIVE TECHNOLOGY</span></div></div>
           </div>
 
-          <div className="hero-projects" ref={heroVisualRef}>
-            <a href="#works" className="hero-project hero-project-lipstick" aria-label="浏览口红 AI 广告作品">
-              <img src={media + 'works/lipstick.jpg'} alt="口红 AI 广告真实画面" />
-              <span>03 / AI ADVERTISING<br/><strong>Lipstick Film</strong></span>
-            </a>
-            <a href="/insightpilot/" className="hero-project hero-project-main hero-project-insightpilot" aria-label="查看 InsightPilot 数据分析 Agent">
-              <div className="hero-project-browser"><div className="browser-bar"><i/><i/><i/><span>INSIGHTPILOT / DATA ANALYSIS</span></div><img src={media + 'insightpilot/report.png'} alt="InsightPilot 校验后的平均收入报告和分渠道图表" /></div>
-              <div className="hero-project-caption"><span>01 / FEATURED CASE</span><strong>InsightPilot</strong><small>AI Product · Data Analysis · Approval</small></div>
-            </a>
-            <div className="hero-project hero-project-aux hero-project-asmr">
-              <a href="/asmr-miniature/" className="hero-aux-link" aria-label="查看 ASMR 风格微缩模型展示项目"><video ref={heroVideoRef} muted loop playsInline preload="metadata" poster={media + 'asmr-miniature/cover.webp'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)}><source src={media + 'asmr-miniature/final-video.mp4'} type="video/mp4" /></video><span>02 / AI VIDEO<br/><strong>Miniature ASMR</strong></span></a>
-              <button className="hero-video-toggle" type="button" onClick={toggleHeroVideo} disabled={heroError} aria-label={playing ? '暂停 ASMR 项目视频' : '播放 ASMR 项目视频'}>{heroError ? '静态封面' : playing ? 'Ⅱ' : '▶'}</button>
+          <div className="hero-projects home-showcase" ref={heroVisualRef}>
+            <div className="hero-product-grid" aria-label="精选 AI 产品">
+              {featuredProducts.map(work => (
+                <a key={work.id} href={work.slug} className={`hero-product-card hero-product-${work.id}`} aria-label={`查看 ${work.title} ${work.featuredLabel}`}>
+                  <div className="hero-product-preview"><img src={work.cover} alt="" /></div>
+                  <div className="hero-product-meta">
+                    <div><strong>{work.title}</strong><small>{work.featuredLabel}</small></div>
+                    <Arrow />
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="hero-motion-previews" aria-label="影像作品预览">
+              <div className="hero-project hero-project-aux hero-project-asmr">
+                <a href="/asmr-miniature/" className="hero-aux-link" aria-label="查看 ASMR 风格微缩模型展示项目"><video ref={heroVideoRef} muted loop playsInline preload="metadata" poster={media + 'asmr-miniature/cover.webp'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)}><source src={media + 'asmr-miniature/final-video.mp4'} type="video/mp4" /></video><span><strong>Miniature ASMR</strong></span></a>
+                <button className="hero-video-toggle" type="button" onClick={toggleHeroVideo} disabled={heroError} aria-label={playing ? '暂停 ASMR 项目视频' : '播放 ASMR 项目视频'}>{heroError ? '静态封面' : playing ? 'Ⅱ' : '▶'}</button>
+              </div>
+              <a href="#motion-works" className="hero-project hero-project-lipstick" aria-label="浏览口红 AI 广告作品">
+                <img src={media + 'works/lipstick.jpg'} alt="口红 AI 广告真实画面" />
+                <span><strong>口红广告</strong></span>
+              </a>
             </div>
           </div>
         </div>
@@ -120,7 +131,12 @@ function App() {
         <div className="experience"><div className="experience-heading"><h3>把探索，落在实际问题上</h3><span>SELECTED EXPERIENCE / 2023 — NOW</span></div>{projects.map(([date,title,role,description,stack],i) => <details key={title} className="experience-row"><summary><span className="experience-date">{date}</span><strong>{title}</strong><span className="experience-role">{role}</span><span className="expand-icon">+</span></summary><div className="experience-detail"><p>{description}</p><span>{stack}</span></div></details>)}</div>
       </section>
 
-      <section className="works section-space" id="works"><div className="wrap"><SectionLabel number="02">SELECTED WORK · 作品与案例</SectionLabel><div className="section-heading"><h2>画面有想法，<br/>作品有故事。</h2><p>从产品到影像，从动态到静帧。<br/>探索 AI 创作的不同表达。</p></div><WorkGallery/></div></section>
+      <section className="works section-space" id="works" aria-label="作品与案例">
+        <div className="wrap">
+          <SectionLabel number="02">SELECTED WORK · 作品与案例</SectionLabel>
+          <WorkGallery />
+        </div>
+      </section>
 
       <section className="strengths wrap section-space" id="strengths"><SectionLabel number="03">MY APPROACH · 个人优势</SectionLabel><div className="section-heading"><h2>理性为底，创造为翼。</h2><p>从提出问题，<br/>到让想法真正发生。</p></div><div className="strength-grid">{strengths.map(([n,title,label,description,tags]) => <article className="strength-card" key={n}><div className="strength-top"><span>{n}</span><span>{label}</span></div><div className={'line-art art-' + n} aria-hidden="true"><i/><i/><i/><i/></div><h3>{title}</h3><p>{description}</p><div className="tags">{tags.map(tag => <span key={tag}>{tag}</span>)}</div></article>)}</div></section>
 

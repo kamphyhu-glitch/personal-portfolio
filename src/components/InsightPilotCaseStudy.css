@@ -204,14 +204,6 @@
 
 .insight-case-evidence dt { color: var(--insight-muted); font-size: 12px; }
 .insight-case-evidence dd { margin: 5px 0 0; font-size: 24px; font-weight: 600; }
-.case-insightpilot + .case-flowpilot { margin-top: 38px; }
-.case-insightpilot .case-cover img { object-position: center 64%; }
-.hero-project-insightpilot .hero-project-browser img { object-position: center 58%; }
-.hero-project-insightpilot .hero-project-caption {
-  inset: 42px 16px auto auto;
-  background: #254d3deb;
-}
-
 @media (max-width: 850px) {
   .insight-case-shell { width: calc(100% - 40px); }
   .insight-case-hero,
