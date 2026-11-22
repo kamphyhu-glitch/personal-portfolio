@@ -5,6 +5,7 @@ import './hero.css'
 import './theme.css'
 import WorkGallery from './components/WorkGallery'
 import FlowPilotCaseStudy from './components/FlowPilotCaseStudy'
+import InsightPilotCaseStudy from './components/InsightPilotCaseStudy'
 import AsmrMiniatureCaseStudy from './components/AsmrMiniatureCaseStudy'
 import ContentOperationsCaseStudy from './components/ContentOperationsCaseStudy'
 import ProfileCard from './components/ProfileCard'
@@ -129,14 +130,14 @@ function App() {
   </>
 }
 const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
-const page = currentPath === '/flowpilot'
-  ? <FlowPilotCaseStudy />
-  : currentPath === '/asmr-miniature'
-    ? <AsmrMiniatureCaseStudy />
-    : currentPath === '/content-operations'
-      ? <ContentOperationsCaseStudy />
-    : <App />
-createRoot(document.getElementById('root')).render(page)
+const caseStudyPages = {
+  '/flowpilot': FlowPilotCaseStudy,
+  '/insightpilot': InsightPilotCaseStudy,
+  '/asmr-miniature': AsmrMiniatureCaseStudy,
+  '/content-operations': ContentOperationsCaseStudy,
+}
+const Page = caseStudyPages[currentPath] ?? App
+createRoot(document.getElementById('root')).render(<Page />)
 
 
 
