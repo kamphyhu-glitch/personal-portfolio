@@ -16,6 +16,7 @@ import { works } from './works'
 
 const media = '/media/'
 const featuredProducts = works.filter(work => work.featuredLabel)
+const posterCount = works.filter(work => work.kind === 'image').length
 const email = '2998052700@qq.com'
 const projects = [
   ['2025.09 — 至今', '用户行为预测与因果归因', '核心研究课题', '以城市出行轨迹为研究对象，构建多维评估指标，结合 XGBoost 与 SHAP 探索非线性影响机制。', 'Python / SQL / XGBoost / SHAP'],
@@ -117,14 +118,41 @@ function App() {
 
       <section className="about wrap section-space" id="about">
         <SectionLabel number="01">ABOUT ME · 关于我</SectionLabel>
-        <div className="about-grid"><div className="portrait-block"><ProfileCard avatarUrl={media + 'portrait.jpeg'} onContactClick={() => { window.location.hash='contact' }}/><p className="location">中国 · 广州 / 籍贯云南丽江</p></div>
-          <div className="about-copy"><p className="eyebrow subtle">RESEARCHER. AI CREATOR. PROBLEM SOLVER.</p><h2>把脑海里的画面，<br/><span className="muted">变成看得见的故事。</span></h2><p className="body-copy">你好，我是熊启懿，华南理工大学研究生。我喜欢用理性的方式拆解问题，也喜欢用 AI 把想象变成画面。从交通与数据研究出发，我逐渐把探索延伸到视频创作、广告分镜和自动化工作流。</p><p className="body-copy">我擅长把一个想法拆成可执行的镜头，再将生成、筛选和迭代串成流程。比起单张好看的图，我更在意画面能否讲清楚故事，以及这套方法能否稳定地复用。</p>
-            <div className="services"><p className="services-label">我可以参与的创作 / WHAT I CAN HELP WITH</p><div className="service-list"><article><span>01</span><h3>AI 视频创作</h3><p>广告、游戏 CG 与短剧的视觉探索和镜头制作。</p></article><article><span>02</span><h3>广告分镜设计</h3><p>梳理创意、镜头节奏与视觉表达，让想法具体可见。</p></article><article><span>03</span><h3>AI 工作流搭建</h3><p>结合 Prompt 与自动化工具，串联创作和数据处理流程。</p></article></div></div>
+        <div className="about-grid">
+          <div className="portrait-block">
+            <ProfileCard avatarUrl={media + 'portrait.jpeg'} onContactClick={() => { window.location.hash = 'contact' }}/>
+            <p className="location">中国 · 广州 / 籍贯云南丽江</p>
+          </div>
+          <div className="about-copy">
+            <h2>AI 产品设计<br/><span className="muted">与内容创作</span></h2>
+            <p className="body-copy">你好，我是熊启懿，华南理工大学交通运输硕士研究生。做出行数据研究时，我习惯先厘清问题和指标口径。这个习惯也延续到了我的 AI Agent 项目里：先让用户看清分析方案或任务计划，确认后再执行。</p>
+            <p className="body-copy">我也有内容运营实习和 AI 视觉创作的经历。做广告海报或短片时，我会先确定画面要传达的卖点或情绪，再用参考图、分镜和多轮生成来调整画面。</p>
+            <div className="services">
+              <div className="service-list">
+                <article>
+                  <h3>AI Agent 产品</h3>
+                  <p>InsightPilot 支持 CSV 分析和报告导出，FlowPilot 支持任务规划和执行前审批。</p>
+                </article>
+                <article>
+                  <h3>内容运营</h3>
+                  <p>参与综艺热点选题、艺人拍摄协作，以及品牌直播素材的二次剪辑。</p>
+                </article>
+                <article>
+                  <h3>AI 视觉创作</h3>
+                  <p>从 ASMR 微缩模型短片到 DIMOO 和饮料品牌的概念海报，用画面表现产品卖点和场景氛围。</p>
+                </article>
+              </div>
+            </div>
             <div className="education"><div><span>2025 — 2028（预计）</span><strong>华南理工大学</strong><p>交通运输 · 硕士研究生</p></div><div><span>2021 — 2025</span><strong>武汉科技大学</strong><p>交通运输工程 · 本科</p></div></div>
-            <div className="stats"><div><strong>05<span>项</span></strong><p>研究与项目经历</p></div><div><strong>03<span>域</span></strong><p>交通 · 数据 · AI</p></div><div><strong>CET<span>—</span>6</strong><p>英语能力认证</p></div></div>
+            <div className="stats">
+              <div><strong>{featuredProducts.length}<span>个</span></strong><p>AI Agent 作品</p></div>
+              <div><strong>{posterCount}<span>张</span></strong><p>品牌概念海报</p></div>
+              <div><strong>CET<span>—</span>6</strong><p>英语能力认证</p></div>
+            </div>
             <a className="text-link" href={`mailto:${email}`}>{email} <Arrow /></a>
-          </div></div>
-        <div className="experience"><div className="experience-heading"><h3>把探索，落在实际问题上</h3><span>SELECTED EXPERIENCE / 2023 — NOW</span></div>{projects.map(([date,title,role,description,stack],i) => <details key={title} className="experience-row"><summary><span className="experience-date">{date}</span><strong>{title}</strong><span className="experience-role">{role}</span><span className="expand-icon">+</span></summary><div className="experience-detail"><p>{description}</p><span>{stack}</span></div></details>)}</div>
+          </div>
+        </div>
+        <div className="experience"><div className="experience-heading"><h3>研究与项目经历</h3><span>SELECTED EXPERIENCE / 2023 — NOW</span></div>{projects.map(([date,title,role,description,stack],i) => <details key={title} className="experience-row"><summary><span className="experience-date">{date}</span><strong>{title}</strong><span className="experience-role">{role}</span><span className="expand-icon">+</span></summary><div className="experience-detail"><p>{description}</p><span>{stack}</span></div></details>)}</div>
       </section>
 
       <section className="works section-space" id="works" aria-label="作品与案例">

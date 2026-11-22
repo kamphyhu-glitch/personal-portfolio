@@ -14,9 +14,6 @@
   .portrait-block { position:static; min-width:0; }
   .about-copy h2,.section-heading h2 { font-size:clamp(28px,7.2vw,40px); line-height:1.5; letter-spacing:-.8px; }
   .body-copy { font-size:14px; line-height:1.95; margin-top:20px; }
-  .service-list p { font-size:13px; line-height:1.85; }
-  .services-label { font-size:10px; line-height:1.8; }
-  .service-list h3 { font-size:15px; }
   .education { gap:16px; }
   .education span { font-size:10px; line-height:1.5; }
   .education p { font-size:12px; line-height:1.7; }

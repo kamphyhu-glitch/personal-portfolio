@@ -12,7 +12,7 @@ function ProfileCardComponent({
   behindGlowEnabled=true, behindGlowColor='rgba(248,142,95,.38)',
   behindGlowSize='72%', className='', enableTilt=true,
   name='熊启懿', title='华南理工大学 · 硕士研究生', handle='XIONG QIYI',
-  status='AI 视频 / 创意工作流', contactText='联系我', showUserInfo=true, onContactClick
+  status='AI 产品 / 内容创作', contactText='联系我', showUserInfo=true, onContactClick
 }) {
   const wrapRef=useRef(null)
   const shellRef=useRef(null)
@@ -87,7 +87,7 @@ function ProfileCardComponent({
         <div className="pc-content pc-avatar-content">
           {failed?<div className="pc-photo-fallback">{name}</div>:<img className="avatar" src={avatarUrl} alt={`${name}的个人照片`} loading="lazy" onError={()=>setFailed(true)}/>}
         </div>
-        <div className="pc-content pc-details"><p className="pc-kicker">RESEARCHER & AI CREATOR</p><h3>{name}</h3><p>{title}</p></div>
+        <div className="pc-content pc-details"><p className="pc-kicker">AI PRODUCTS &amp; CREATIVE WORK</p><h3>{name}</h3><p>{title}</p></div>
         {showUserInfo&&<div className="pc-user-info"><div className="pc-user-details"><div className="pc-mini-avatar"><img src={miniAvatarUrl||avatarUrl} alt="" loading="lazy" onError={event=>{event.currentTarget.style.visibility='hidden'}}/></div><div className="pc-user-text"><div className="pc-handle">{handle}</div><div className="pc-status">{status}</div></div></div><button className="pc-contact-btn" onClick={onContactClick} type="button" aria-label={`联系${name}`}>{contactText} <span aria-hidden="true">↗</span></button></div>}
       </div>
     </section></div>
