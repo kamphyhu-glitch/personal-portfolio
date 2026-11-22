@@ -2,13 +2,16 @@
 
 React + Vite 单页网站。内容根据用户提供的简历编写，PC 版心最大 1700px，并包含窄屏布局。
 
-## Netlify 部署（2026-09-13）
+## 2026-11-23：恢复创意海报展示
+
+图片区展示 DIMOO、雪碧、脉动、1664、可口可乐五张非官方参考创作海报，桌面端横排、手机端纵排，点击可查看完整图片。相关代码在 `src/works.js`、`src/components/WorkGallery.jsx` 和 `WorkGallery.css`，图片在 `public/media/works/`。当前站点连接 GitHub 仓库 `kamphyhu-glitch/personal-portfolio`，推送到 `main` 后由 Netlify 构建发布。请从本仓库发布，以免把旧折叠画廊再次发布到线上。
+
+## Netlify 部署
 
 - 公开地址：https://profound-torrone-507c6b.netlify.app/
 - 管理页面：https://app.netlify.com/projects/profound-torrone-507c6b
-- 本次发布保留当前浅色风格，使用 Netlify Drop 上传 `dist` 构建产物，已设置 Public。
-- 后续更新：运行 `npm run build`，在上述项目的 Production deploys 上传新的 `dist` 文件夹。不要另建项目，以保持网址不变。
-- `netlify.toml` 为将来 CLI / Git 构建指定 `npm run build` 和 `dist`；当前采用手动上传，没有连接 Git 自动部署。
+- 当前发布方式（2026-11-23）：GitHub `kamphyhu-glitch/personal-portfolio` 的 `main` 分支触发 Netlify 自动构建；`netlify.toml` 指定构建命令 `npm run build`，发布目录 `dist`。
+- 2026-09-13 曾通过 Netlify Drop 手动上传 `dist`；该记录已不适用于当前的自动部署。
 - 当前未配置自定义域名。下文“仅本地预览”是历史素材记录，部署状态以本节为准。
 
 ## 运行

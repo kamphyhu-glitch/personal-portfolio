@@ -1,4 +1,4 @@
-// Owner-supplied media from Desktop/机器人. Image titles are descriptive display titles.
+// Video media is owner supplied; the poster studies are non-official AI-assisted reference work.
 export const works = [
   {
     id: 'insightpilot',
@@ -20,9 +20,9 @@ export const works = [
   { id:'ad-02', kind:'video', type:'AI 广告', title:'口红广告', english:'LIPSTICK / COMMERCIAL', description:'以人物近景与唇色呈现美妆广告的视觉表达。', cover:'/media/works/lipstick.jpg', src:'/media/works/lipstick.mp4', status:'published', accent:'purple' },
   { id:'cg-01', kind:'video', type:'游戏 CG', title:'游戏 CG', english:'GAME CINEMATIC', description:'森林中的弓箭手与幽暗环境，探索奇幻角色的电影感呈现。', cover:'/media/works/game-cg.jpg', src:'/media/works/game-cg.mp4', status:'published', accent:'blue' },
   { id:'drama-01', kind:'video', type:'AI 短剧', title:'AI 短剧', english:'AI SHORT DRAMA', description:'围绕机器人与狗狗的生活场景展开 AI 叙事探索。', cover:'/media/works/short-drama.jpg', src:'/media/works/short-drama.mp4', status:'published', accent:'yellow' },
-  { id:'image-01', kind:'image', type:'AI 叙事图像', title:'城市的另一面', english:'THE OTHER SIDE', description:'夕阳下的旧街巷与远处高楼同框，以人物、光线和环境细节构建叙事。', cover:'/media/works/image-01.png', src:'/media/works/image-01.png', status:'published', accent:'orange' },
-  { id:'image-02', kind:'image', type:'AI 时尚视觉', title:'静默的时尚', english:'QUIET FASHION', description:'人物、皮革与岩石质感相互映衬，结合杂志式字体编排的时尚视觉练习。', cover:'/media/works/image-02.png', src:'/media/works/image-02.png', status:'published', accent:'purple' },
-  { id:'image-03', kind:'image', type:'AI 拼贴艺术', title:'脑海中的世界', english:'WORLDS WITHIN', description:'将人物侧影、山海、城市与天体拼接在一起，呈现复古纸张质感的想象空间。', cover:'/media/works/image-03.png', src:'/media/works/image-03.png', status:'published', accent:'blue' },
-  { id:'image-04', kind:'image', type:'AI 场景设计', title:'云端的家', english:'HOME ABOVE THE CLOUDS', description:'机器人和狗狗坐在浮岛小屋前，让暖色夕阳与童话场景传递陪伴感。', cover:'/media/works/image-04.png', src:'/media/works/image-04.png', status:'published', accent:'yellow' },
-  { id:'image-05', kind:'image', type:'AI 风景视觉', title:'云海日出', english:'SUNRISE ABOVE THE CLOUDS', description:'悬崖栈道、远山与云海交织，以金色晨光营造辽阔的空间层次。', cover:'/media/works/image-05.png', src:'/media/works/image-05.png', status:'published', accent:'orange' },
+  { id:'image-01', kind:'image', type:'潮玩海报 · 参考创作', title:'DIMOO · 牛仔冒险', english:'DIMOO / LITTLE COWBOY', description:'用童趣房间、手绘边框与玩具道具呈现牛仔造型角色，练习潮玩海报的情境化表达。', cover:'/media/works/dimoo-cowboy.png', src:'/media/works/dimoo-cowboy.png', status:'study', accent:'orange' },
+  { id:'image-02', kind:'image', type:'饮料广告 · 参考创作', title:'雪碧 · 清爽激流', english:'SPRITE / REFRESHING RAPIDS', description:'将雪碧罐与瀑布峡谷结合，用漂流者的尺度与水流动势表现清爽体验。', cover:'/media/works/sprite-canyon.png', src:'/media/works/sprite-canyon.png', status:'study', accent:'yellow' },
+  { id:'image-03', kind:'image', type:'运动饮料广告 · 参考创作', title:'脉动 · 活力山径', english:'MIZONE / KEEP MOVING', description:'把瓶身融入山体，串联徒步、骑行与跑步场景，练习运动饮料的户外传播视觉。', cover:'/media/works/mizone-mountain.png', src:'/media/works/mizone-mountain.png', status:'study', accent:'blue' },
+  { id:'image-04', kind:'image', type:'啤酒广告 · 参考创作', title:'1664 · 海风一刻', english:'1664 BLANC / SUMMER WAVE', description:'用海浪环绕瓶身，以冲浪者和海岛场景表现夏日的清凉氛围。', cover:'/media/works/1664-surf.png', src:'/media/works/1664-surf.png', status:'study', accent:'blue' },
+  { id:'image-05', kind:'image', type:'可乐广告 · 参考创作', title:'可口可乐 · 冰爽冒险', english:'COCA-COLA / ICE-COLD ADVENTURE', description:'以冰川中的玻璃瓶和趣味角色互动，练习冰爽卖点的故事化表达。', cover:'/media/works/coca-cola-ice.png', src:'/media/works/coca-cola-ice.png', status:'study', accent:'orange' },
 ]
