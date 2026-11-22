@@ -23,32 +23,13 @@
 }
 
 .hero-projects.home-showcase {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(14px, 1.65vw, 24px);
-  min-height: 0;
-}
-
-.hero-product-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(10px, 1.2vw, 20px);
-}
-
-.hero-product-card {
   display: block;
-  overflow: hidden;
-  color: #20201d;
-  background: #faf8f2;
-  border: 1px solid rgba(22, 22, 22, .18);
-  border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(40, 34, 26, .09);
-  transition: transform .25s ease, border-color .25s ease;
-}
-
-.hero-product-card:hover {
-  transform: translateY(-3px);
-  border-color: #8f6957;
+  width: 100%;
+  max-width: clamp(460px, calc(118svh - 220px), 790px);
+  min-height: 0;
+  aspect-ratio: 1.18;
+  justify-self: end;
+  transform-style: flat;
 }
 
 .home-showcase a:focus-visible {
@@ -56,71 +37,48 @@
   outline-offset: 4px;
 }
 
-.hero-product-preview {
-  aspect-ratio: 16 / 10;
-  border-bottom: 1px solid rgba(22, 22, 22, .1);
-  background: #edeae4;
+.home-showcase .hero-project {
+  position: absolute;
 }
 
-.hero-product-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+.home-showcase .hero-project-insightpilot {
+  inset: 21% auto auto 6%;
+  width: 85%;
 }
 
-.hero-product-insightpilot img,
+.hero-project-insightpilot .hero-project-browser img,
 .product-case-grid .case-insightpilot .case-cover img {
   object-position: center 58%;
 }
 
-.hero-product-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  padding: clamp(11px, 1.35vw, 20px);
+.hero-project-insightpilot .hero-project-caption {
+  inset: 42px 16px auto auto;
+  background: #254d3deb;
 }
 
-.hero-product-meta strong {
-  display: block;
-  font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif;
-  font-size: clamp(20px, 2.15vw, 33px);
-  font-weight: 400;
-  letter-spacing: -.035em;
-  line-height: 1.1;
+.home-showcase .hero-project-flowpilot {
+  inset: auto 1% 2% auto;
+  width: 66%;
+  z-index: 4;
+  transform: translateZ(75px) rotateX(1deg) rotateY(5deg) rotateZ(-2deg);
 }
 
-.hero-product-meta small {
-  display: block;
-  margin-top: 5px;
-  color: #605950;
-  font-size: clamp(10px, .9vw, 13px);
-  line-height: 1.4;
+.home-showcase .hero-project-flowpilot:hover {
+  transform: translateZ(90px) rotateX(.4deg) rotateY(3deg) rotateZ(-1deg) scale(1.014);
 }
 
-.hero-product-meta > span {
-  color: #815642;
-  font-size: clamp(15px, 1.8vw, 24px);
+.hero-project-flowpilot .hero-project-caption {
+  inset: auto 16px 14px auto;
 }
 
-.hero-motion-previews {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(10px, 1.2vw, 20px);
-  width: min(61%, 400px);
-  justify-self: end;
+.home-showcase .hero-project-aux {
+  inset: auto auto 3% 1%;
+  width: 44%;
 }
 
-.home-showcase .hero-project {
-  position: relative;
-  inset: auto;
-  z-index: auto;
-  grid-area: auto;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  transform: none;
-  box-shadow: 0 10px 22px rgba(40, 34, 26, .12);
+.home-showcase .hero-project-lipstick {
+  inset: 2% 1% auto auto;
+  width: 55%;
 }
 
 .works .section-label {
@@ -207,6 +165,11 @@
   .editorial-hero .editorial-title {
     font-size: clamp(52px, 9.6vw, 80px);
   }
+
+  .hero-projects.home-showcase {
+    max-width: 730px;
+    justify-self: center;
+  }
 }
 
 @media (max-width: 700px) {
@@ -229,18 +192,52 @@
     gap: 14px;
     margin-top: 24px;
   }
-
-  .hero-motion-previews {
-    width: 76%;
-  }
-
-  .hero-product-meta {
-    padding-inline: 9px;
-  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-product-card {
-    transition: none;
+@media (max-width: 620px) {
+  .hero-projects.home-showcase {
+    aspect-ratio: 1.06;
+  }
+
+  .home-showcase .hero-project-aux {
+    aspect-ratio: 16 / 9;
+    transform: rotateZ(-3deg);
+  }
+
+  .home-showcase .hero-project-insightpilot {
+    transform: rotateZ(1.5deg);
+  }
+
+  .home-showcase .hero-project-flowpilot {
+    transform: rotateZ(-2deg);
+  }
+
+  .home-showcase .hero-project-flowpilot:hover {
+    transform: rotateZ(-1deg) scale(1.014);
+  }
+
+  .home-showcase .hero-project-lipstick {
+    aspect-ratio: 16 / 9;
+    transform: rotateZ(3deg);
+  }
+
+  .home-showcase .browser-bar {
+    height: 22px;
+  }
+
+  .home-showcase .hero-project-caption {
+    padding: 6px 8px;
+  }
+
+  .home-showcase .hero-project-caption strong {
+    font-size: clamp(16px, 4.6vw, 22px);
+  }
+
+  .hero-project-insightpilot .hero-project-caption {
+    inset: 29px 8px auto auto;
+  }
+
+  .hero-project-flowpilot .hero-project-caption {
+    inset: auto 9px 8px auto;
   }
 }

@@ -93,26 +93,22 @@ function App() {
           </div>
 
           <div className="hero-projects home-showcase" ref={heroVisualRef}>
-            <div className="hero-product-grid" aria-label="精选 AI 产品">
-              {featuredProducts.map(work => (
-                <a key={work.id} href={work.slug} className={`hero-product-card hero-product-${work.id}`} aria-label={`查看 ${work.title} ${work.featuredLabel}`}>
-                  <div className="hero-product-preview"><img src={work.cover} alt="" /></div>
-                  <div className="hero-product-meta">
-                    <div><strong>{work.title}</strong><small>{work.featuredLabel}</small></div>
-                    <Arrow />
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div className="hero-motion-previews" aria-label="影像作品预览">
-              <div className="hero-project hero-project-aux hero-project-asmr">
-                <a href="/asmr-miniature/" className="hero-aux-link" aria-label="查看 ASMR 风格微缩模型展示项目"><video ref={heroVideoRef} muted loop playsInline preload="metadata" poster={media + 'asmr-miniature/cover.webp'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)}><source src={media + 'asmr-miniature/final-video.mp4'} type="video/mp4" /></video><span><strong>Miniature ASMR</strong></span></a>
-                <button className="hero-video-toggle" type="button" onClick={toggleHeroVideo} disabled={heroError} aria-label={playing ? '暂停 ASMR 项目视频' : '播放 ASMR 项目视频'}>{heroError ? '静态封面' : playing ? 'Ⅱ' : '▶'}</button>
-              </div>
-              <a href="#motion-works" className="hero-project hero-project-lipstick" aria-label="浏览口红 AI 广告作品">
-                <img src={media + 'works/lipstick.jpg'} alt="口红 AI 广告真实画面" />
-                <span><strong>口红广告</strong></span>
+            <a href="#motion-works" className="hero-project hero-project-lipstick" aria-label="浏览口红 AI 广告作品">
+              <img src={media + 'works/lipstick.jpg'} alt="口红 AI 广告真实画面" />
+              <span>AI ADVERTISING<br/><strong>Lipstick Film</strong></span>
+            </a>
+            {featuredProducts.map(work => (
+              <a key={work.id} href={work.slug} className={`hero-project hero-project-main hero-project-${work.id}`} aria-label={`查看 ${work.title} ${work.featuredLabel}`}>
+                <div className="hero-project-browser">
+                  <div className="browser-bar" aria-hidden="true"><i/><i/><i/><span>{work.title.toUpperCase()}</span></div>
+                  <img src={work.cover} alt="" />
+                </div>
+                <div className="hero-project-caption"><strong>{work.title}</strong><small>{work.featuredLabel}</small></div>
               </a>
+            ))}
+            <div className="hero-project hero-project-aux hero-project-asmr">
+              <a href="/asmr-miniature/" className="hero-aux-link" aria-label="查看 ASMR 风格微缩模型展示项目"><video ref={heroVideoRef} muted loop playsInline preload="metadata" poster={media + 'asmr-miniature/cover.webp'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)}><source src={media + 'asmr-miniature/final-video.mp4'} type="video/mp4" /></video><span>AI VIDEO<br/><strong>Miniature ASMR</strong></span></a>
+              <button className="hero-video-toggle" type="button" onClick={toggleHeroVideo} disabled={heroError} aria-label={playing ? '暂停 ASMR 项目视频' : '播放 ASMR 项目视频'}>{heroError ? '静态封面' : playing ? 'Ⅱ' : '▶'}</button>
             </div>
           </div>
         </div>
