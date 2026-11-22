@@ -34,7 +34,9 @@
 }
 
 .insight-case-hero,
-.insight-case-recording {
+.insight-case-recording,
+.insight-case-purpose,
+.insight-case-scenario {
   display: grid;
   grid-template-columns: minmax(0, .83fr) minmax(0, 1.17fr);
   gap: clamp(28px, 5vw, 76px);
@@ -123,6 +125,50 @@
 
 .insight-case-section h2 { letter-spacing: -.035em; }
 
+.insight-case-purpose,
+.insight-case-scenario {
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, .78fr);
+}
+
+.insight-case-facts {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+  margin: 0;
+  border: 1px solid var(--insight-line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.insight-case-facts dt {
+  color: var(--insight-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.insight-case-facts dd { margin: 6px 0 0; line-height: 1.65; }
+
+.insight-case-steps {
+  display: grid;
+  gap: 15px;
+  margin: 22px 0 0;
+  padding-left: 24px;
+}
+
+.insight-case-steps li { padding-left: 6px; }
+.insight-case-steps li::marker { color: var(--insight-accent); font-weight: 600; }
+.insight-case-steps p {
+  margin: 4px 0 0;
+  color: var(--insight-muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.insight-case-plan-shot {
+  width: min(100%, 370px);
+  justify-self: center;
+}
+
 .insight-case-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -158,13 +204,20 @@
 
 .insight-case-evidence dt { color: var(--insight-muted); font-size: 12px; }
 .insight-case-evidence dd { margin: 5px 0 0; font-size: 24px; font-weight: 600; }
-.case-insightpilot { margin-top: 38px; }
+.case-insightpilot + .case-flowpilot { margin-top: 38px; }
 .case-insightpilot .case-cover img { object-position: center 64%; }
+.hero-project-insightpilot .hero-project-browser img { object-position: center 58%; }
+.hero-project-insightpilot .hero-project-caption {
+  inset: 42px 16px auto auto;
+  background: #254d3deb;
+}
 
 @media (max-width: 850px) {
   .insight-case-shell { width: calc(100% - 40px); }
   .insight-case-hero,
-  .insight-case-recording { grid-template-columns: minmax(0, 1fr); }
+  .insight-case-recording,
+  .insight-case-purpose,
+  .insight-case-scenario { grid-template-columns: minmax(0, 1fr); }
   .insight-case-grid { grid-template-columns: minmax(0, 1fr); }
 }
 

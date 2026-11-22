@@ -95,9 +95,9 @@ function App() {
               <img src={media + 'works/lipstick.jpg'} alt="口红 AI 广告真实画面" />
               <span>03 / AI ADVERTISING<br/><strong>Lipstick Film</strong></span>
             </a>
-            <a href="/flowpilot/" className="hero-project hero-project-main" aria-label="查看 FlowPilot AI Agent 项目">
-              <div className="hero-project-browser"><div className="browser-bar"><i/><i/><i/><span>FLOWPILOT / AGENT WORKSPACE</span></div><img src={media + 'flowpilot/flowpilot-planning.png'} alt="FlowPilot 多 Agent 任务规划界面" /></div>
-              <div className="hero-project-caption"><span>01 / FEATURED CASE</span><strong>FlowPilot</strong><small>AI Agent · Product Design · Prototyping</small></div>
+            <a href="/insightpilot/" className="hero-project hero-project-main hero-project-insightpilot" aria-label="查看 InsightPilot 数据分析 Agent">
+              <div className="hero-project-browser"><div className="browser-bar"><i/><i/><i/><span>INSIGHTPILOT / DATA ANALYSIS</span></div><img src={media + 'insightpilot/report.png'} alt="InsightPilot 校验后的平均收入报告和分渠道图表" /></div>
+              <div className="hero-project-caption"><span>01 / FEATURED CASE</span><strong>InsightPilot</strong><small>AI Product · Data Analysis · Approval</small></div>
             </a>
             <div className="hero-project hero-project-aux hero-project-asmr">
               <a href="/asmr-miniature/" className="hero-aux-link" aria-label="查看 ASMR 风格微缩模型展示项目"><video ref={heroVideoRef} muted loop playsInline preload="metadata" poster={media + 'asmr-miniature/cover.webp'} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setHeroError(true)}><source src={media + 'asmr-miniature/final-video.mp4'} type="video/mp4" /></video><span>02 / AI VIDEO<br/><strong>Miniature ASMR</strong></span></a>
